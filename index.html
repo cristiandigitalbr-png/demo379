@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GR Refrigeraciones | Repuestos · Accesorios · Lavarropas</title>
+<meta name="description" content="GR Refrigeraciones – Venta de insumos de refrigeración, accesorios y repuestos para lavarropas. San Martín 1580, Reconquista. Tel: 3482-363009">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue:       #1a4fa0;
+    --blue-dark:  #0f2f66;
+    --blue-deep:  #081d40;
+    --blue-mid:   #2563c4;
+    --sky:        #4a9fd4;
+    --ice:        #dceeff;
+    --white:      #ffffff;
+    --off:        #f4f7fc;
+    --gray:       #5a6070;
+    --dark:       #0a0f1e;
+    --line:       rgba(26,79,160,0.12);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Barlow', sans-serif; color:var(--dark); background:var(--white); overflow-x:hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:0 52px; height:64px;
+    display:flex; justify-content:space-between; align-items:center;
+    background:rgba(8,29,64,0.97); backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .nav-brand { text-decoration:none; display:flex; align-items:center; gap:14px; }
+  .nav-monogram {
+    width:42px; height:42px; border-radius:50%;
+    background:var(--blue); border:2px solid var(--sky);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Barlow Condensed', sans-serif;
+    font-size:16px; font-weight:800; color:white; letter-spacing:1px;
+  }
+  .nav-name { font-family:'Barlow Condensed', sans-serif; font-size:20px; font-weight:700; color:white; letter-spacing:1px; display:block; line-height:1.1; }
+  .nav-sub  { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--sky); font-weight:400; display:block; }
+  .nav-links { display:flex; gap:28px; list-style:none; align-items:center; }
+  .nav-links a { text-decoration:none; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.6); transition:color .3s; }
+  .nav-links a:hover { color:white; }
+  .nav-cta { background:var(--blue) !important; color:white !important; padding:10px 22px; border-radius:3px; font-size:11px !important; border:1px solid var(--sky) !important; }
+  .nav-cta:hover { background:var(--blue-mid) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height:100vh; padding-top:64px;
+    display:flex; align-items:center;
+    position:relative; overflow:hidden;
+    background:var(--blue-deep);
+  }
+
+  /* Animated circuit / grid background */
+  .hero-grid {
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(74,159,212,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74,159,212,0.07) 1px, transparent 1px);
+    background-size:48px 48px;
+    animation:gridDrift 20s linear infinite;
+  }
+  @keyframes gridDrift { from{transform:translate(0,0)} to{transform:translate(48px,48px)} }
+
+  /* Glowing orbs */
+  .hero-orb1 {
+    position:absolute; top:-120px; right:-80px;
+    width:560px; height:560px; border-radius:50%;
+    background:radial-gradient(circle, rgba(37,99,196,0.45) 0%, transparent 70%);
+    animation:pulse 6s ease-in-out infinite;
+  }
+  .hero-orb2 {
+    position:absolute; bottom:-100px; left:-60px;
+    width:400px; height:400px; border-radius:50%;
+    background:radial-gradient(circle, rgba(74,159,212,0.25) 0%, transparent 70%);
+    animation:pulse 8s ease-in-out infinite reverse;
+  }
+  @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.08);opacity:0.7} }
+
+  /* Cold air particles */
+  .hero-particles { position:absolute; inset:0; pointer-events:none; }
+  .particle {
+    position:absolute; width:3px; height:3px; border-radius:50%;
+    background:rgba(220,238,255,0.5);
+    animation:float linear infinite;
+  }
+  @keyframes float {
+    0%   { transform:translateY(100vh) translateX(0); opacity:0; }
+    10%  { opacity:1; }
+    90%  { opacity:0.3; }
+    100% { transform:translateY(-10vh) translateX(30px); opacity:0; }
+  }
+
+  .hero-content {
+    position:relative; z-index:2;
+    max-width:1100px; margin:0 auto;
+    padding:80px 52px;
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+    animation:fadeUp .9s ease-out;
+  }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+
+  .hero-text {}
+  .hero-eyebrow {
+    font-size:10px; letter-spacing:5px; text-transform:uppercase;
+    color:var(--sky); margin-bottom:20px; font-weight:600;
+    display:flex; align-items:center; gap:10px;
+  }
+  .hero-eyebrow::before { content:''; width:24px; height:1px; background:var(--sky); opacity:0.6; }
+
+  .hero-title {
+    font-family:'Barlow Condensed', sans-serif;
+    font-size:clamp(42px,6vw,80px); font-weight:800;
+    color:white; line-height:.95; letter-spacing:1px;
+    text-transform:uppercase; margin-bottom:18px;
+  }
+  .hero-title span { color:var(--sky); display:block; }
+
+  .hero-tagline {
+    font-size:16px; color:rgba(255,255,255,0.55);
+    line-height:1.75; margin-bottom:36px; font-weight:300;
+    max-width:420px;
+  }
+
+  .hero-badges {
+    display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px;
+  }
+  .badge {
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(74,159,212,0.3);
+    color:var(--ice); font-size:11px; font-weight:600;
+    letter-spacing:1px; text-transform:uppercase;
+    padding:7px 14px; border-radius:3px;
+  }
+  .badge svg { opacity:.7; }
+
+  .hero-buttons { display:flex; gap:12px; flex-wrap:wrap; }
+  .btn-hero-primary {
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 32px; background:var(--blue);
+    border:1px solid var(--blue-mid);
+    color:white; text-decoration:none;
+    font-size:11px; font-weight:700; letter-spacing:2px;
+    text-transform:uppercase; border-radius:3px; transition:all .3s;
+  }
+  .btn-hero-primary:hover { background:var(--blue-mid); transform:translateY(-2px); box-shadow:0 8px 24px rgba(26,79,160,0.4); }
+  .btn-hero-outline {
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 28px;
+    border:1px solid rgba(74,159,212,0.4);
+    color:var(--sky); text-decoration:none;
+    font-size:11px; font-weight:600; letter-spacing:2px;
+    text-transform:uppercase; border-radius:3px; transition:all .3s;
+  }
+  .btn-hero-outline:hover { background:rgba(74,159,212,0.08); }
+
+  /* Hero visual side */
+  .hero-visual {
+    position:relative; display:flex; align-items:center; justify-content:center;
+  }
+  .hero-visual-ring {
+    position:absolute; width:340px; height:340px; border-radius:50%;
+    border:1px solid rgba(74,159,212,0.2);
+    animation:spin 30s linear infinite;
+  }
+  .hero-visual-ring2 {
+    position:absolute; width:260px; height:260px; border-radius:50%;
+    border:1px dashed rgba(74,159,212,0.15);
+    animation:spin 20s linear infinite reverse;
+  }
+  @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+  .hero-icon-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:16px;
+    position:relative; z-index:2;
+  }
+  .hero-icon-card {
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(74,159,212,0.2);
+    border-radius:6px; padding:24px 20px; text-align:center;
+    transition:all .3s;
+  }
+  .hero-icon-card:hover { background:rgba(74,159,212,0.08); border-color:rgba(74,159,212,0.4); transform:translateY(-3px); }
+  .hero-icon-card svg { margin-bottom:10px; }
+  .hero-icon-label { font-family:'Barlow Condensed', sans-serif; font-size:14px; font-weight:700; color:white; letter-spacing:1px; text-transform:uppercase; }
+  .hero-icon-sub { font-size:11px; color:rgba(255,255,255,0.35); margin-top:3px; }
+
+  /* ── SECCIONES ── */
+  .section-label { font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--blue); margin-bottom:10px; font-weight:700; }
+  .section-title { font-family:'Barlow Condensed', sans-serif; font-size:clamp(28px,4vw,52px); font-weight:800; color:var(--dark); line-height:1; letter-spacing:.5px; text-transform:uppercase; margin-bottom:14px; }
+  .section-divider { width:36px; height:3px; background:var(--blue); margin-bottom:28px; }
+
+  /* ── EMPRESA ── */
+  .empresa-wrap { background:var(--white); padding:100px 52px; }
+  .empresa { max-width:1060px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; }
+
+  .empresa-photo {
+    position:relative; border-radius:6px; overflow:hidden;
+    box-shadow:0 24px 60px rgba(26,79,160,0.15);
+  }
+  .empresa-photo img { width:100%; display:block; }
+  .empresa-photo-overlay {
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 60%, rgba(8,29,64,0.6) 100%);
+  }
+  .empresa-photo-badge {
+    position:absolute; bottom:20px; left:20px;
+    background:rgba(255,255,255,0.95); backdrop-filter:blur(8px);
+    padding:10px 16px; border-radius:4px;
+    border-left:3px solid var(--blue);
+  }
+  .empresa-photo-badge-name { font-family:'Barlow Condensed', sans-serif; font-size:16px; font-weight:800; color:var(--dark); text-transform:uppercase; letter-spacing:1px; }
+  .empresa-photo-badge-sub { font-size:10px; color:var(--blue); letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+
+  .empresa-text p { font-size:15px; line-height:1.9; color:var(--gray); margin-bottom:16px; font-weight:400; }
+  .empresa-highlight {
+    font-family:'Barlow Condensed', sans-serif;
+    font-size:22px; font-weight:700; color:var(--blue-dark);
+    text-transform:uppercase; letter-spacing:.5px;
+    margin-bottom:22px; line-height:1.2;
+    border-left:3px solid var(--blue); padding-left:16px;
+  }
+
+  /* ── PRODUCTOS ── */
+  .productos-wrap { background:var(--off); padding:90px 52px; }
+  .productos { max-width:1060px; margin:0 auto; }
+  .productos-header { margin-bottom:50px; }
+  .productos-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+
+  .producto-card {
+    background:white; border-radius:6px;
+    padding:36px 30px;
+    border-top:3px solid var(--blue);
+    box-shadow:0 2px 16px rgba(26,79,160,0.06);
+    transition:all .3s;
+    display:flex; align-items:flex-start; gap:20px;
+  }
+  .producto-card:hover { transform:translateY(-5px); box-shadow:0 16px 40px rgba(26,79,160,0.12); }
+  .producto-icon {
+    width:52px; height:52px; border-radius:8px;
+    background:var(--ice); border:1.5px solid rgba(26,79,160,0.15);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .producto-nombre { font-family:'Barlow Condensed', sans-serif; font-size:20px; font-weight:800; color:var(--dark); text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px; }
+  .producto-desc { font-size:13px; color:var(--gray); line-height:1.6; font-weight:400; }
+
+  /* ── BANNER ── */
+  .banner-wrap {
+    background:var(--blue-deep); padding:80px 52px; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .banner-grid {
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(74,159,212,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74,159,212,0.05) 1px, transparent 1px);
+    background-size:32px 32px;
+  }
+  .banner-content { position:relative; z-index:2; max-width:560px; margin:0 auto; }
+  .banner-content .section-label { color:var(--sky); display:block; margin-bottom:14px; }
+  .banner-content h2 { font-family:'Barlow Condensed', sans-serif; font-size:clamp(28px,4vw,52px); font-weight:800; color:white; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; }
+  .banner-content p { color:rgba(255,255,255,0.5); font-size:14px; margin-bottom:32px; line-height:1.7; font-weight:300; }
+  .btn-banner {
+    display:inline-flex; align-items:center; gap:10px;
+    padding:16px 40px; background:var(--blue);
+    color:white; text-decoration:none;
+    font-size:12px; font-weight:700; letter-spacing:2px;
+    text-transform:uppercase; border-radius:3px; transition:all .3s;
+    border:1px solid var(--blue-mid);
+  }
+  .btn-banner:hover { background:var(--blue-mid); transform:translateY(-2px); box-shadow:0 10px 28px rgba(26,79,160,0.5); }
+
+  /* ── CONTACTO ── */
+  .contacto-wrap { background:var(--white); padding:80px 24px 60px; }
+  .contacto { max-width:500px; margin:0 auto; text-align:center; }
+  .contacto .section-divider { margin:0 auto 32px; }
+  .contacto-items { display:flex; flex-direction:column; }
+  .contacto-item { padding:20px 0; border-bottom:1px solid var(--line); }
+  .contacto-item:last-child { border-bottom:none; }
+  .contacto-label { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--blue); margin-bottom:6px; font-weight:700; }
+  .contacto-value { font-family:'Barlow Condensed', sans-serif; font-size:22px; color:var(--dark); font-weight:700; letter-spacing:.5px; }
+  .contacto-value a { color:var(--blue-dark); text-decoration:none; font-family:'Barlow', sans-serif; font-size:18px; font-weight:600; transition:color .2s; }
+  .contacto-value a:hover { color:var(--blue); }
+
+  /* ── FOOTER ── */
+  footer { background:var(--dark); text-align:center; padding:46px 24px; }
+  .footer-name { font-family:'Barlow Condensed', sans-serif; font-size:26px; font-weight:800; color:white; text-transform:uppercase; letter-spacing:2px; margin-bottom:4px; }
+  .footer-sub { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:rgba(74,159,212,0.4); margin-bottom:18px; }
+  .footer-divider { width:32px; height:2px; background:rgba(26,79,160,0.4); margin:0 auto 18px; }
+  .footer-text { font-size:12px; line-height:1.9; color:rgba(255,255,255,0.2); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    nav { padding:0 20px; }
+    .nav-links { display:none; }
+    .hero-content { grid-template-columns:1fr; padding:50px 24px; gap:40px; }
+    .hero-visual { display:none; }
+    .empresa-wrap { padding:60px 24px; }
+    .empresa { grid-template-columns:1fr; gap:36px; }
+    .productos-wrap { padding:60px 24px; }
+    .productos-grid { grid-template-columns:1fr; }
+    .banner-wrap { padding:60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#inicio" class="nav-brand">
+    <div class="nav-monogram">GR</div>
+    <div>
+      <span class="nav-name">GR Refrigeraciones</span>
+      <span class="nav-sub">Repuestos · Accesorios · Lavarropas</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#empresa">Empresa</a></li>
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="https://wa.me/543482363009" target="_blank" class="nav-cta">Consultar</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-grid"></div>
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Reconquista · Santa Fe</div>
+      <h1 class="hero-title">
+        GR<span>Refrigeraciones</span>
+      </h1>
+      <p class="hero-tagline">
+        Todo lo que necesitás para refrigeración, lavarropas y más — con el respaldo de quien conoce el oficio y la atención que cada cliente merece.
+      </p>
+      <div class="hero-badges">
+        <span class="badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          Repuestos originales
+        </span>
+        <span class="badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          Atención personalizada
+        </span>
+        <span class="badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          Amplio stock
+        </span>
+      </div>
+      <div class="hero-buttons">
+        <a href="https://wa.me/543482363009" target="_blank" class="btn-hero-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          Consultar ahora
+        </a>
+        <a href="#productos" class="btn-hero-outline">Ver productos</a>
+      </div>
+    </div>
+
+    <!-- Visual side -->
+    <div class="hero-visual">
+      <div class="hero-visual-ring"></div>
+      <div class="hero-visual-ring2"></div>
+      <div class="hero-icon-grid">
+        <div class="hero-icon-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4a9fd4" stroke-width="1.5" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/><rect x="2" y="3" width="20" height="18" rx="2"/></svg>
+          <div class="hero-icon-label">Repuestos</div>
+          <div class="hero-icon-sub">Refrigeración</div>
+        </div>
+        <div class="hero-icon-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4a9fd4" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <div class="hero-icon-label">Accesorios</div>
+          <div class="hero-icon-sub">Todo tipo</div>
+        </div>
+        <div class="hero-icon-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4a9fd4" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 4v4M16 4v4M2 12h20"/></svg>
+          <div class="hero-icon-label">Lavarropas</div>
+          <div class="hero-icon-sub">Repuestos</div>
+        </div>
+        <div class="hero-icon-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4a9fd4" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 6v6l4 2"/></svg>
+          <div class="hero-icon-label">Equipos</div>
+          <div class="hero-icon-sub">Stock disponible</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMPRESA -->
+<div class="empresa-wrap" id="empresa">
+  <div class="empresa">
+    <div class="empresa-photo">
+      <img src="data:image/png;base64,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" alt="GR Refrigeraciones local">
+      <div class="empresa-photo-overlay"></div>
+      <div class="empresa-photo-badge">
+        <div class="empresa-photo-badge-name">GR Refrigeraciones</div>
+        <div class="empresa-photo-badge-sub">San Martín 1580 · Reconquista</div>
+      </div>
+    </div>
+    <div class="empresa-text">
+      <div class="section-label">Nuestra empresa</div>
+      <h2 class="section-title">Más de una década al servicio del frío</h2>
+      <div class="section-divider"></div>
+      <p class="empresa-highlight">Conocimiento técnico + atención de barrio = la diferencia que notás desde el primer llamado.</p>
+      <p>En GR Refrigeraciones llevamos años siendo el punto de referencia en Reconquista y la región para todo lo que tiene que ver con refrigeración y electrodomésticos. Sabemos que cuando algo se rompe, necesitás respuesta rápida, repuesto justo y alguien que te explique bien.</p>
+      <p>Contamos con un amplio stock de repuestos de refrigeración, accesorios y piezas para lavarropas de todas las marcas. Atendemos tanto a técnicos como a particulares, siempre con el mismo compromiso y la misma calidez.</p>
+      <p>Porque en GR no solo vendemos un repuesto — te acompañamos hasta que el problema quede resuelto.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTOS -->
+<div class="productos-wrap" id="productos">
+  <div class="productos">
+    <div class="productos-header">
+      <div class="section-label">Lo que ofrecemos</div>
+      <h2 class="section-title">Nuestros productos</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="productos-grid">
+      <div class="producto-card">
+        <div class="producto-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4fa0" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 4v16M2 9h5M2 14h5"/></svg>
+        </div>
+        <div>
+          <div class="producto-nombre">Repuestos de refrigeración</div>
+          <div class="producto-desc">Termostatos, compresores, gomas, bandejas, placas y todo lo necesario para heladeras y freezers de todas las marcas.</div>
+        </div>
+      </div>
+      <div class="producto-card">
+        <div class="producto-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4fa0" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div>
+          <div class="producto-nombre">Repuestos para lavarropas</div>
+          <div class="producto-desc">Correas, programadores, bombas de agua, filtros, tapas, electroválvulas y mucho más para cualquier modelo.</div>
+        </div>
+      </div>
+      <div class="producto-card">
+        <div class="producto-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4fa0" stroke-width="1.8" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div>
+          <div class="producto-nombre">Accesorios</div>
+          <div class="producto-desc">Mangueras, abrazaderas, soportes, tornillería, adhesivos y accesorios de instalación para técnicos y particulares.</div>
+        </div>
+      </div>
+      <div class="producto-card">
+        <div class="producto-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4fa0" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div>
+          <div class="producto-nombre">Equipos</div>
+          <div class="producto-desc">Venta de equipos de refrigeración y electrodomésticos seleccionados. Consultanos por disponibilidad y precios.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BANNER -->
+<div class="banner-wrap">
+  <div class="banner-grid"></div>
+  <div class="banner-content">
+    <span class="section-label">Atención directa</span>
+    <h2>¿Buscás un repuesto?</h2>
+    <p>Escribinos por WhatsApp y te respondemos al toque. Si no lo tenemos en stock, lo conseguimos.</p>
+    <a href="https://wa.me/543482363009" target="_blank" class="btn-banner">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      Escribinos por WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- CONTACTO -->
+<div class="contacto-wrap" id="contacto">
+  <div class="contacto">
+    <div class="section-label">Dónde encontrarnos</div>
+    <h2 class="section-title" style="font-size:clamp(26px,4vw,48px);">Contacto</h2>
+    <div class="section-divider"></div>
+    <div class="contacto-items">
+      <div class="contacto-item">
+        <div class="contacto-label">Dirección</div>
+        <div class="contacto-value">San Martín 1580, Reconquista</div>
+      </div>
+      <div class="contacto-item">
+        <div class="contacto-label">Celular / WhatsApp</div>
+        <div class="contacto-value"><a href="https://wa.me/543482363009">3482-363009</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">GR Refrigeraciones</div>
+  <div class="footer-sub">Repuestos · Accesorios · Lavarropas · Reconquista</div>
+  <div class="footer-divider"></div>
+  <div class="footer-text">
+    San Martín 1580, Reconquista, Santa Fe · Tel: 3482-363009<br>
+    <span style="font-size:11px;color:rgba(255,255,255,0.12);margin-top:10px;display:block;">© 2025 · Todos los derechos reservados</span>
+  </div>
+</footer>
+
+<script>
+  // Generate floating particles
+  const container = document.getElementById('particles');
+  for(let i = 0; i < 22; i++){
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `
+      left:${Math.random()*100}%;
+      width:${Math.random()*3+1}px;
+      height:${Math.random()*3+1}px;
+      animation-duration:${Math.random()*12+8}s;
+      animation-delay:${Math.random()*10}s;
+      opacity:${Math.random()*0.5+0.1};
+    `;
+    container.appendChild(p);
+  }
+</script>
+</body>
+</html>
